@@ -138,4 +138,41 @@ You must generate mock data programmatically.
 Hardcoded static arrays are discouraged.
 
 ---
+##Please add a README (Mandatory), with below answers to questions.
 
+Please explain:
+
+1. How you structured components
+2. How customer–order relationships are modeled
+3. How filtering, sorting, and searching are implemented
+4. Where you avoided over-engineering
+5. What would break first at 50k rows
+
+---
+
+## Minimum Acceptance Criteria
+
+Your solution must:
+
+- Render customers with expandable orders
+- Support selection (customers only)
+- Support filtering, searching, and sorting
+- Use TanStack Table correctly
+- Be readable, typed, and runnable
+
+---
+
+## Bonus (Optional)
+
+- Clean column abstraction
+- Memoization where appropriate
+- Accessibility considerations
+- Performance trade-off discussion
+
+---
+
+## Submission
+
+- Share a GitHub repository
+- Include setup instructions
+- Ensure the project runs without additional configuration
