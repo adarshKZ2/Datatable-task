@@ -97,7 +97,7 @@ Example:
 
 ---
 
-## Filtering, Searching & Sorting (Mandatory)
+## Filtering, Searching & Sorting & Pagination
 
 ### Search
 - Global search across:
@@ -111,16 +111,22 @@ Example:
 - By Last Updated
 - (Optional bonus: ID)
 
-📌 Must be implemented using **TanStack Table APIs**.
+### Pagination 
+- Pagination must be **fully functional**
+- Each page must display **exactly 25 customer rows**
+- Order (child) rows:
+  - Do **not** count toward the 25-row limit
+  - Are shown only when their parent customer row is expanded
+
+📌 Example:
+- Page size = 25 customers
+- If 5 customers are expanded and each has 3 orders:
+  - The table may visually render **25 + 15 rows**
+  - Pagination logic still operates on **customers only**
 
 ---
 
-## Pagination
-
-- Display pagination UI:
-
-- Client-side pagination is acceptable
-- Correct state modeling is more important than UX polish
+📌 Must be implemented using **TanStack Table APIs**.
 
 ---
 
