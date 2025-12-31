@@ -9,9 +9,9 @@ Build a **functional, production-quality data table** using **React, TypeScript,
 - Nested rows (Customers → Orders)
 - Filtering, searching, and sorting
 - Clean, readable, maintainable code
-
-UI polish is **not** the focus.  
-Correct behavior and clarity of design **are**.
+- Must match the design as clos as possible.
+- 
+Correct behavior and clarity of design **are** important.
 
 ---
 
@@ -136,9 +136,59 @@ You must generate mock data programmatically.
 - Mixed statuses
 
 Hardcoded static arrays are discouraged.
+Use the below function if you want, or create your own. 
+```ts
+//types.ts
+export type Order = {
+  id: string;
+  orderNumber: number;
+  amount: number;
+};
+
+export type Customer = {
+  id: string;
+  email: string;
+  status: "Active" | "Inactive";
+  lastUpdated: number;
+  orders: Order[];
+};
+
+```
+```ts
+//generateMockData.ts
+import { Customer, Order } from "./types";
+
+export function generateMockCustomers(count = 2000): Customer[] {
+  const customers: Customer[] = [];
+
+  for (let i = 1; i <= count; i++) {
+    const orderCount = Math.floor(Math.random() * 5);
+    const orders: Order[] = [];
+
+    for (let j = 1; j <= orderCount; j++) {
+      orders.push({
+        id: `order-${i}-${j}`,
+        orderNumber: 100 + j,
+        amount: Math.floor(Math.random() * 500) + 50,
+      });
+    }
+
+    customers.push({
+      id: `cust-${i}`,
+      email: `customer${i}@example.com`,
+      status: i % 3 === 0 ? "Inactive" : "Active",
+      lastUpdated: Date.now() - Math.floor(Math.random() * 1000 * 60 * 60 * 24),
+      orders,
+    });
+  }
+
+  return customers;
+}
+
+```
 
 ---
-##Please add a README (Mandatory), with below answers to questions.
+## Please add a README (Mandatory), with below answers to questions.
 
 Please explain:
 
@@ -167,7 +217,6 @@ Your solution must:
 - Clean column abstraction
 - Memoization where appropriate
 - Accessibility considerations
-- Performance trade-off discussion
 
 ---
 
