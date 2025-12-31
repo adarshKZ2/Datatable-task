@@ -10,7 +10,7 @@ Build a **functional, production-quality data table** using **React, TypeScript,
 - Filtering, searching, and sorting
 - Clean, readable, maintainable code
 - Must match the design as clos as possible.
-- 
+ 
 Correct behavior and clarity of design **are** important.
 
 ---
