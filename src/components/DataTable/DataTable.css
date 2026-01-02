@@ -1,0 +1,233 @@
+/* ================= TABLE ================= */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto; /* content-based sizing */
+}
+
+/* Column widths */
+th:first-child,
+td:first-child {
+  width: 60px; /* checkbox */
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+  width: 60px; /* chevron */
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+  width: 120px; /* customer ID */
+}
+
+th:nth-child(4),
+td:nth-child(4) {
+  min-width: 120px;
+  max-width: 200px; /* email */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+th:nth-child(5),
+td:nth-child(5) {
+  width: 160px; /* status */
+}
+
+th:nth-child(6),
+td:nth-child(6) {
+  width: 160px; /* last updated */
+}
+
+th,
+td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  vertical-align: middle;
+}
+
+th {
+  font-weight: 600;
+  background-color: #fafafa;
+}
+
+/* ================= CHILD ROWS ================= */
+.child-row {
+  background-color: #fdfdfd;
+  font-size: 14px;
+}
+
+/* Indent ONLY the first column */
+.child-row td:first-child {
+  padding-left: 48px;
+}
+
+/* ================= CHECKBOX ================= */
+.table-checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+/* ================= EXPAND / COLLAPSE ================= */
+.expander {
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+}
+
+/* Chevron using borders */
+.expander::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid #555;
+  border-bottom: 2px solid #555;
+  transform: rotate(-45deg); /* ► */
+  transition: transform 0.15s ease;
+}
+
+/* Expanded state ▼ */
+.expander.expanded::before {
+  transform: rotate(45deg);
+}
+
+/* Focus handling */
+.expander:focus {
+  outline: none;
+}
+
+.expander:focus-visible {
+  outline: 2px solid rgba(79, 70, 229, 0.4);
+  outline-offset: 2px;
+}
+
+/* ================= STATUS BADGE ================= */
+.status {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  min-width: 72px;
+  text-align: center;
+}
+
+.status.active {
+  background-color: #e6f4ea;
+  color: #137333;
+}
+
+.status.inactive {
+  background-color: #fdecea;
+  color: #b3261e;
+}
+
+/* ================= TOOLBAR ================= */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0 12px 0;
+}
+
+/* Common toolbar control styles */
+.toolbar input:not(.search-input)
+.toolbar select,
+.toolbar button {
+  height: 32px;
+  min-width: 160px;
+  padding: 0 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500; /* normalized */
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+/* Status dropdown arrow */
+.toolbar select {
+  height: 32px;
+  min-width: 160px;
+  padding: 0 28px 0 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+  /* Custom arrow */
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23666' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+/* Hover + focus styles */
+.toolbar select:hover,
+.toolbar button:hover {
+  border-color: #4f46e5;
+}
+
+.toolbar select:focus,
+.toolbar button:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.15);
+}
+
+/* ================= SEARCH INPUT ================= */
+.search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #888;
+  pointer-events: none;
+}
+
+.search-input {
+  height: 32px;
+  width: 260px;
+  padding-left: 40px;
+  padding-right: 12px;
+  border-radius: 18px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.search-input::placeholder {
+  color: #aaa;
+}
+
+.search-input:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.15);
+}
+
+/* ================= PAGINATION ================= */
+.pagination {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
